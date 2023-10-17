@@ -5,10 +5,10 @@ using UnityEngine;
 public class EnemyCode : MonoBehaviour
 {
     //variables
-    public BoxCollider2D EnemySpawn;      //Defines the grid as a dependant potential spawning space for food
+    public BoxCollider2D EnemySpawn;        //Defines the grid as a dependant potential spawning space for food
 
-    List<Transform> enemies; //variable to store all the parts of the snake body
-    public Transform bodyPrefab;//variable to store the body
+    List<Transform> enemies;                //variable to store all the parts of the snake body
+    public Transform bodyPrefab;            //variable to store the body
 
     // Start is called before the first frame update
     void Start()
@@ -20,10 +20,12 @@ public class EnemyCode : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (enemies.Count < 4);
+        for (int i = 0; i < enemies.Count; i++);
+        //if (enemies.Count < 4);
         {
             Transform segment = Instantiate(this.bodyPrefab);               //Create a new enemy
-            segment.position = RandomPos();                                 //Position it randomly
+            //segment.position = new Vector2(Mathf.Round(x), Mathf.Round(y));
+            //RandomPos();                                 //Position it randomly
             enemies.Add(segment);                                           //Add it to the list
         }
     }
@@ -31,12 +33,12 @@ public class EnemyCode : MonoBehaviour
     //Function to randomize the position of the enemy and spawning
     private void RandomPos()
     {
-        Bounds bounds = EnemySpawn.bounds;                                                //Declare the limits of the space
+        Bounds bounds = EnemySpawn.bounds;                                       //Declare the limits of the space
 
         float x = Random.Range(bounds.min.x, bounds.max.x);                      //Gives a random value to x within the limit
         float y = Random.Range(bounds.min.y, bounds.max.y);                      //Gives a random value to y within the limit
 
-        transform.position = new Vector2(Mathf.Round(x), Mathf.Round(y));           //Round the values of x & y while changing position of food
+        transform.position = new Vector2(Mathf.Round(x), Mathf.Round(y));        //Round the values of x & y when setting position of enemy
     }
 
     //Function for destruction every time enemy collides with bullet

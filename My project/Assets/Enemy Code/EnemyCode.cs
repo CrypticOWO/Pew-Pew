@@ -20,25 +20,18 @@ public class EnemyCode : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        for (int i = 0; i < enemies.Count; i++);
-        //if (enemies.Count < 4);
+        Bounds bounds = EnemySpawn.bounds;                                      //Declare the limits of the space
+
+        float x = Random.Range(bounds.min.x, bounds.max.x);                     //Gives a random value to x within the limit
+        float y = Random.Range(bounds.min.y, bounds.max.y);                     //Gives a random value to y within the limit
+
+        if (enemies.Count < 6)
         {
-            Transform segment = Instantiate(this.bodyPrefab);               //Create a new enemy
-            //segment.position = new Vector2(Mathf.Round(x), Mathf.Round(y));
-            //RandomPos();                                 //Position it randomly
-            enemies.Add(segment);                                           //Add it to the list
+            new WaitForSeconds(1.0f);                                           //Short Delay in Spawning
+            Transform Enemy = Instantiate(this.bodyPrefab);                     //Create a new enemy
+            Enemy.position = new Vector2(Mathf.Round(x), Mathf.Round(y));       //Randomizes Position
+            enemies.Add(Enemy);                                                 //Add it to the list
         }
-    }
-
-    //Function to randomize the position of the enemy and spawning
-    private void RandomPos()
-    {
-        Bounds bounds = EnemySpawn.bounds;                                       //Declare the limits of the space
-
-        float x = Random.Range(bounds.min.x, bounds.max.x);                      //Gives a random value to x within the limit
-        float y = Random.Range(bounds.min.y, bounds.max.y);                      //Gives a random value to y within the limit
-
-        transform.position = new Vector2(Mathf.Round(x), Mathf.Round(y));        //Round the values of x & y when setting position of enemy
     }
 
     //Function for destruction every time enemy collides with bullet

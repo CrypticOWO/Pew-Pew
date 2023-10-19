@@ -218,7 +218,7 @@ GameObject:
   - component: {fileID: 889131013}
   - component: {fileID: 889131012}
   - component: {fileID: 889131011}
-  - component: {fileID: 889131010}
+  - component: {fileID: 889131014}
   m_Layer: 0
   m_Name: Main enemy
   m_TagString: Untagged
@@ -226,20 +226,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &889131010
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 889131009}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be81ecaf736f13c438954e0cd8a13b1b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  EnemySpawn: {fileID: 1490293399}
-  bodyPrefab: {fileID: 1514177309548199616, guid: 2b3ec24bd93bf92429920b0c1fe6a0f9, type: 3}
 --- !u!61 &889131011
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -326,13 +312,28 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 889131009}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.07, y: 7.61, z: 0}
+  m_LocalPosition: {x: 0.01, y: 7.22, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &889131014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 889131009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a04f4f87e73b27479b6513b7dec860e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EnemySpawn: {fileID: 1490293399}
+  bodyPrefab: {fileID: 1514177309548199616, guid: 2b3ec24bd93bf92429920b0c1fe6a0f9, type: 3}
+  spawnInterval: 0.5
 --- !u!1 &1490293398
 GameObject:
   m_ObjectHideFlags: 0
@@ -385,7 +386,7 @@ Transform:
   m_GameObject: {fileID: 1490293398}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 6, z: 0}
-  m_LocalScale: {x: 14, y: 1, z: 1}
+  m_LocalScale: {x: 13, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -541,4 +542,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0.1
   xBorder: 6.5
+  bodyPrefab: {fileID: 3758269646922665936, guid: 710aebe71bec8ec4388f843e5886616d, type: 3}
   right: {fileID: 0}

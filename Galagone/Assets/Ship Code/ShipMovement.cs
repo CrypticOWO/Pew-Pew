@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ShipMovement : MonoBehaviour
 {
@@ -12,9 +13,6 @@ public class ShipMovement : MonoBehaviour
     public Transform bodyPrefab;        //variable to store the body
 
     public GameObject right;
-
-    int playerOneScore;
-    public Text scoreTextP1;
 
     // Start is called before the first frame update
     void Start()
@@ -39,23 +37,6 @@ public class ShipMovement : MonoBehaviour
         {
             Shoot();
         }
-
-        //move up
-        for (int i = bullets.Count - 1; i >= 0; i--)
-        {
-            Transform bullet = bullets[i];
-            bullet.position = new Vector2(bullet.position.x, bullet.position.y + speed);
-
-            // Remove bullets when they go off-screen
-            if (bullet.position.y > 5f)  // Adjust this value as needed
-            {
-                Destroy(bullet.gameObject);
-                bullets.RemoveAt(i);
-            }
-        }
-
-        scoreTextP1.text = playerOneScore.ToString();
-
     }
 
     //Function to make the ship shoot
@@ -64,5 +45,13 @@ public class ShipMovement : MonoBehaviour
         Transform bullet = Instantiate(this.bodyPrefab);
         bullet.position = new Vector2(transform.position.x, transform.position.y);
         bullets.Add(bullet);
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "Enemy")
+        {
+            SceneManager.LoadScene("EndScreen");        //Load Game Over
+        }
     }
 }

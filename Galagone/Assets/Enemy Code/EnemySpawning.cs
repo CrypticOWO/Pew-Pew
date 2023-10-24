@@ -17,6 +17,7 @@ public class EnemySpawning : MonoBehaviour
     {
         enemies = new List<Transform>();        //Log all existing nemies
         StartCoroutine(SpawnEnemies());         //Enables IEnumerator to function
+        PlayerPrefs.SetFloat("Score", 0f);      //Resets the score to be 0
     }
 
     IEnumerator SpawnEnemies()                  //Allows the use of delays

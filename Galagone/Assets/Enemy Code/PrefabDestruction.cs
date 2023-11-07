@@ -6,22 +6,20 @@ using UnityEngine.SceneManagement;
 public class PrefabDestruction : MonoBehaviour
 {
     public float speed = 0.015f;
+    private Transform player;
 
     // Start is called before the first frame update
     void Start()
     {
-        speed = 0.0010f;
+        speed = 0.0005f;
+        player = GameObject.FindWithTag("Player").transform;
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.position = new Vector2(transform.position.x, transform.position.y - speed);
-
-        if (transform.position.y < -5f)
-        {
-            SceneManager.LoadScene("EndScreen");        //Load Game Over 
-        }
+        var step = .5f * Time.deltaTime;
+        transform.position = Vector3.MoveTowards(transform.position, player.position, step);
     }
 
     //Function for destruction every time enemy collides with bullet

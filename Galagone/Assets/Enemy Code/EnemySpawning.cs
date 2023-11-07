@@ -8,7 +8,7 @@ public class EnemySpawning : MonoBehaviour
     public BoxCollider2D EnemySpawn;
     List<Transform> enemies;
     public Transform bodyPrefab;
-    public float spawnInterval = 1.0f; // Time between spawns
+    public float spawnInterval = 2.0f; // Time between spawns
 
     public static float Score = 0;
     public Text PlayerScore;

@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class BulletCollision : MonoBehaviour
 {
-    public float speed = 0.1f;
-
+    public Vector2 Velocity;
 
     // Start is called before the first frame update
     void Start()
@@ -16,20 +15,20 @@ public class BulletCollision : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = new Vector2(transform.position.x, transform.position.y + speed);
+        Vector2 transform.position += 5f;
 
-            // Remove bullets when they go off-screen
-            if (transform.position.y > 5f)
-            {
-                Destroy(gameObject); 
-            }
+        // Remove bullets when they go off-screen
+        if (transform.position.y > 5f)
+        {
+            Destroy(gameObject); 
+        }
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Enemy")
         {
-            Destroy(gameObject);                                                // Destroy the bullet when it collides with an enemy
+            Destroy(gameObject);       // Destroy the bullet when it collides with an enemy
         }
     }
 }
